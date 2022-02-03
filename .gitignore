@@ -1,0 +1,18 @@
+# Python temporary files
+__pycache__/
+
+# Log FIles
+log/
+
+# vs Code files
+.vscode/
+
+# Private
+repository_token
+
+# Aruco Markers
+images/ArucoFolder/
+
+# not onn x models
+Modelos/fromkeras
+
