@@ -15,8 +15,8 @@ def pixel_dist(point1,point2):
 cam = cv2.VideoCapture(0)
 
 #   Definir propiedades de los Aruco
-# aruco_dict=cv2.aruco.Dictionary_get(cv2.aruco.DICT_6X6_1000)  # Arucos impresos en mercedes
-aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_1000)  # Arucos del Grid De Calibracion
+aruco_dict=cv2.aruco.Dictionary_get(cv2.aruco.DICT_6X6_1000)  # Arucos impresos en mercedes
+# aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_1000)  # Arucos del Grid De Calibracion
 arucoParameters = cv2.aruco.DetectorParameters_create()
 
 #   Propiedades de texto en pantalla
@@ -24,7 +24,7 @@ arucoParameters = cv2.aruco.DetectorParameters_create()
 font                   = cv2.FONT_HERSHEY_SIMPLEX
 bottomLeftCornerOfText = (2,50)
 fontScale              =  0.7 
-fontColor              = (255,255,255)
+fontColor              = (255,255,0)
 lineThickness          = 1
 
 #   Loop Detectar orientacion
