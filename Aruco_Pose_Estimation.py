@@ -28,7 +28,7 @@ fontColor              = (255,255,0)
 lineThickness          = 1
 
 #   Loop Detectar orientacion
-aruco_marker_side_length=0.0255
+aruco_marker_side_length=0.065
 
 while True:
     try:

@@ -14,14 +14,6 @@ cam = cv2.VideoCapture(0)
 cam.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
 
-#   BBDD path
-#imgDataStorePath='/home/ibai/Desktop/EHU_UPV/Base_Datos'
-#now=datetime.now()
-#new_folder_name = now.strftime("%Y_%m_%d_%H_%M_%S")
-#full_path=os.path.join(imgDataStorePath,new_folder_name)
-#os.mkdir(full_path)
-
-
 #   Definir propiedades de los Aruco
 aruco_dict=cv2.aruco.Dictionary_get(cv2.aruco.DICT_6X6_1000)
 arucoParameters = cv2.aruco.DetectorParameters_create()
@@ -35,8 +27,8 @@ fontColor              = (255,255,255)
 lineThickness          = 1
 
 #   Loop Captura de Imagen via webcam
-i=1
-aruco_marker_side_length=0.0255
+# i=1
+# aruco_marker_side_length=0.0255
 while True:
     try:
         #   Tomar Imagen
@@ -68,15 +60,6 @@ while True:
                         fontColor,
                         lineThickness)
 
-        #   Pose Stimation
-        #   Load calibration data
-        with open('calibration.pckl', 'rb') as f:
-            mtx, dist = pickle.load(f)
-        rvecs, tvecs, obj_points = cv2.aruco.estimatePoseSingleMarkers(
-                                    corners,
-                                    aruco_marker_side_length,
-                                    mtx,
-                                    dist)
         #  Mostrar Imagen procesada 
 
         cv2.imshow('Display', frame)
@@ -85,12 +68,7 @@ while True:
             cv2.destroyAllWindows()
             break
 
-        #   Grabar imagen en DIsco
-        #frame_name='Image_{}.jpg'.format(i)
-        #frame_path=os.path.join(full_path,frame_name)
-	
-        #cv2.imwrite(frame_path, frame) 
-        #i=i+1
+        
     except:
         print('Error en loop principal')
         cam.release()
