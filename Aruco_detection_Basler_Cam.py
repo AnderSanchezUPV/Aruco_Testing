@@ -27,7 +27,7 @@ lineThickness          = 2
 cv2.namedWindow('title', cv2.WINDOW_FULLSCREEN )
 
 #   Load calibration data
-with open('calibration.pckl', 'rb') as f:
+with open('calibration_basler.pckl', 'rb') as f:
     mtx, dist = pickle.load(f)
 aruco_marker_side_length=0.065
 
@@ -56,7 +56,7 @@ while camera.IsGrabbing():
             img = image.GetArray()
 
             # Reducir para depuracion Visual
-            img=cv2.resize(img,(int(img.shape[1]/4),int(img.shape[0]/4))) 
+            # img=cv2.resize(img,(int(img.shape[1]/4),int(img.shape[0]/4))) 
 
             # Buscar Arucos
             corners, ids, rejectedImgPoints = cv2.aruco.detectMarkers(img, aruco_dict, 
@@ -78,9 +78,9 @@ while camera.IsGrabbing():
                 dist=pixel_dist(corners[0][0][0],corners[0][0][1])
             
                 #   Texto en pantalla
-                image_text='Definicion: {:.2f} mm/px    Theta:{:.2f}º'.format(
+                image_text='Definicion: {:.2f} mm/px  Theta:{:.2f} Deg'.format(
                             aruco_marker_side_length*1000/dist,
-                            axis_values[0][1])
+                            axis_values[0][0])
                 frame=cv2.putText(frame,image_text,
                             bottomLeftCornerOfText, 
                             font, 

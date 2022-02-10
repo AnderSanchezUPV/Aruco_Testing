@@ -38,7 +38,7 @@ lineThickness          = 2
 cv2.namedWindow('title', cv2.WINDOW_FULLSCREEN )
 
 #   Load calibration data
-with open('calibration.pckl', 'rb') as f:
+with open('calibration_basler.pckl', 'rb') as f:
     mtx, dist = pickle.load(f)
 aruco_marker_side_length=0.065
 
@@ -67,7 +67,7 @@ while camera.IsGrabbing():
             img = image.GetArray()
 
             # Reducir para depuracion Visual
-            img=cv2.resize(img,(int(img.shape[1]/4),int(img.shape[0]/4))) 
+            #img=cv2.resize(img,(int(img.shape[1]/4),int(img.shape[0]/4))) 
 
             # Buscar Arucos
             corners, ids, rejectedImgPoints = cv2.aruco.detectMarkers(img, aruco_dict, 
