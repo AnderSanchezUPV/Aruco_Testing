@@ -12,7 +12,7 @@ def pixel_dist(point1,point2):
 
 #   Definir objeto de la camara
 #cam = cv2.VideoCapture('v4l2src device=/dev/video2 ! jpegdec ! videoconvert  ! video/x-raw, width=1920, height=1080 ! appsink drop=true sync=false',cv2.CAP_GSTREAMER)# Ubuntu
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0) # Win
 
 #   Definir propiedades de los Aruco
 aruco_dict=cv2.aruco.Dictionary_get(cv2.aruco.DICT_6X6_1000)  # Arucos impresos en mercedes
@@ -38,8 +38,8 @@ while True:
             print('Error al capturar imagen')
             break
         #   Obtener Posicion del aruco e identificador
-        #img=np.mean(img,-1)
-        # img=cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+        
+        # img=cv2.cvtColor(img, cv2.COLOR_RGB2GRAY) simular blanco y negro
         corners, ids, rejectedImgPoints = cv2.aruco.detectMarkers(img, aruco_dict, 
                                         parameters=arucoParameters)
 
@@ -89,12 +89,7 @@ while True:
             cv2.destroyAllWindows()
             break
 
-        #   Grabar imagen en DIsco
-        #frame_name='Image_{}.jpg'.format(i)
-        #frame_path=os.path.join(full_path,frame_name)
-	
-        #cv2.imwrite(frame_path, frame) 
-        #i=i+1
+       
     except:
         print('Error en loop principal')
         cam.release()

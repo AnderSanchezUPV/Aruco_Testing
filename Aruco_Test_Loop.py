@@ -10,7 +10,7 @@ def pixel_dist(point1,point2):
 
 #   Definir objeto de la camara
 #cam = cv2.VideoCapture('v4l2src device=/dev/video2 ! jpegdec ! videoconvert  ! video/x-raw, width=1920, height=1080 ! appsink drop=true sync=false',cv2.CAP_GSTREAMER)# Ubuntu
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0) # Windows
 cam.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
 
@@ -27,8 +27,7 @@ fontColor              = (255,255,255)
 lineThickness          = 1
 
 #   Loop Captura de Imagen via webcam
-# i=1
-# aruco_marker_side_length=0.0255
+
 while True:
     try:
         #   Tomar Imagen
