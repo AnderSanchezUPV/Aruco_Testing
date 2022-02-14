@@ -78,9 +78,10 @@ while camera.IsGrabbing():
                 dist=pixel_dist(corners[0][0][0],corners[0][0][1])
             
                 #   Texto en pantalla
-                image_text='Definicion: {:.2f} mm/px  Theta:{:.2f} Deg'.format(
+                #image_text='Definicion: {:.2f} mm/px  Theta:{:.2f} Deg'.format(
+                image_text='Definicion: {:.2f} mm/px  ID: {}'.format(
                             aruco_marker_side_length*1000/dist,
-                            axis_values[0][0])
+                            ids[0])
                 frame=cv2.putText(frame,image_text,
                             bottomLeftCornerOfText, 
                             font, 
