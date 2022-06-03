@@ -18,7 +18,7 @@ def pixel_dist(point1,point2):
     return dist
 #   Definir Path destino
 #   BBDD path
-imgDataStorePath=r'C:\Users\ander\Documents\Imagenes CoMAr'
+imgDataStorePath=r'/home/comar/UPV-EHU/BBDD'
 now=datetime.now()
 new_folder_name = now.strftime("%Y_%m_%d_%H_%M_%S")
 full_path=os.path.join(imgDataStorePath,new_folder_name)
@@ -65,6 +65,7 @@ while camera.IsGrabbing():
             # Access the image data
             image = converter.Convert(grabResult)
             img = image.GetArray()
+            org_img=np.copy(img)
 
             # Reducir para depuracion Visual
             #img=cv2.resize(img,(int(img.shape[1]/4),int(img.shape[0]/4))) 
@@ -107,11 +108,11 @@ while camera.IsGrabbing():
                 cv2.destroyAllWindows()
                 break
              #   Grabar imagen en DIsco            
-            frame_name='Image_{}.jpg'.format(i)
+            frame_name='Image_{}.jpg'.format(str(i).zfill(10))
             frame_path=os.path.join(full_path,frame_name)
             time.sleep(0.250)
 	
-        cv2.imwrite(frame_path, frame) 
+        cv2.imwrite(frame_path, org_img) 
         i=i+1
         grabResult.Release()
 
