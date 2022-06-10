@@ -82,7 +82,8 @@ while camera.IsGrabbing():
                                     dist)
             
             # Dibujar marcadores Aruco y ejes
-            frame = cv2.aruco.drawDetectedMarkers(img, corners, ids)                  
+            frame = cv2.aruco.drawDetectedMarkers(img, corners, ids)
+                              
             if ids is not None and len(ids) > 0:                            
                 frame, axis_values =Ps.pose_stimation(frame,ids,mtx,dist,rvecs,tvecs)
             #   Calcular distancia 
@@ -99,22 +100,27 @@ while camera.IsGrabbing():
                             fontScale,
                             fontColor,
                             lineThickness)
+                
 
-            # Reducir imagen para mostrar en depuracion
-            # frame=cv2.resize(frame,(int(frame.shape[1]/4),int(frame.shape[0]/4))) 
+                # Reducir imagen para mostrar en depuracion
+                # frame=cv2.resize(frame,(int(frame.shape[1]/4),int(frame.shape[0]/4))) 
+            
+                #   Grabar imagen en DIsco            
+                frame_name='Image_{}.jpg'.format(str(i).zfill(10))
+                frame_path=os.path.join(full_path,frame_name)
+            
+	
+                cv2.imwrite(frame_path, org_img) 
+                i=i+1
+                grabResult.Release()
+                
             cv2.imshow('title', frame)
             if cv2.waitKey(1) & 0xFF == 32:
                 camera.StopGrabbing()
                 cv2.destroyAllWindows()
                 break
-             #   Grabar imagen en DIsco            
-            frame_name='Image_{}.jpg'.format(str(i).zfill(10))
-            frame_path=os.path.join(full_path,frame_name)
-            time.sleep(0.250)
-	
-        cv2.imwrite(frame_path, org_img) 
-        i=i+1
-        grabResult.Release()
+            
+        time.sleep(0.250)
 
     except:
         print('Error en loop principal')
