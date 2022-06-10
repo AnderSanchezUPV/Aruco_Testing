@@ -23,7 +23,7 @@ font                   = cv2.FONT_HERSHEY_SIMPLEX
 bottomLeftCornerOfText = (2,50)
 fontScale              =  1
 fontColor              = (255,255,0)
-lineThickness          = 2
+lineThickness          = 2  
 cv2.namedWindow('title', cv2.WINDOW_FULLSCREEN )
 
 #   Load calibration data
